@@ -22,9 +22,7 @@
     body {
       min-height: 100vh;
       margin: 0;
-      display: grid;
-      place-items: center;
-      padding: 32px 20px;
+      padding: clamp(20px, 5vw, 56px) 20px;
       background:
         radial-gradient(ellipse at 12% 12%, rgba(22, 123, 136, 0.09), transparent 32rem),
         var(--canvas);
@@ -33,7 +31,8 @@
     }
 
     main {
-      width: min(100%, 900px);
+      width: min(100%, 1040px);
+      margin: 0 auto;
       overflow: hidden;
       border: 1px solid #e1e8eb;
       border-radius: 22px;
@@ -43,12 +42,19 @@
 
     .accent { height: 7px; background: linear-gradient(90deg, var(--gold) 0 23%, var(--accent) 23% 100%); }
 
-    .content { padding: clamp(30px, 7vw, 64px); }
+    .content { padding: clamp(24px, 6vw, 68px); }
 
-    .hero { display: flex; align-items: center; justify-content: space-between; gap: 26px; }
-    .hero-copy { min-width: 0; }
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      align-items: center;
+      gap: clamp(24px, 5vw, 64px);
+      padding-bottom: clamp(28px, 5vw, 48px);
+      border-bottom: 1px solid #e8edef;
+    }
+    .hero-copy { min-width: 0; max-width: 680px; }
     .portrait {
-      width: clamp(112px, 22vw, 174px);
+      width: clamp(128px, 20vw, 190px);
       aspect-ratio: 1;
       flex: 0 0 auto;
       border: 5px solid white;
@@ -60,7 +66,7 @@
     }
 
     .eyebrow {
-      margin: 0 0 12px;
+      margin: 0 0 15px;
       color: var(--accent);
       font-size: 0.76rem;
       font-weight: 750;
@@ -71,23 +77,23 @@
     h1 {
       margin: 0;
       color: var(--ink);
-      font-size: clamp(2.35rem, 7vw, 4rem);
+      font-size: clamp(2.4rem, 6vw, 3.75rem);
       letter-spacing: -0.055em;
       line-height: 1.06;
     }
 
-    .role { margin: 14px 0 0; font-size: clamp(1.1rem, 3vw, 1.35rem); font-weight: 650; }
-    .summary { max-width: 590px; margin: 18px 0 0; color: var(--muted); }
+    .role { margin: 17px 0 0; font-size: clamp(1.05rem, 2.4vw, 1.3rem); font-weight: 650; }
+    .summary { max-width: 620px; margin: 13px 0 0; color: var(--muted); font-size: 1.04rem; }
 
-    .actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 30px; }
+    .actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 25px; }
 
     .button {
-      min-height: 48px;
+      min-height: 50px;
       display: inline-flex;
       align-items: center;
       justify-content: center;
       gap: 10px;
-      padding: 0 19px;
+      padding: 0 20px;
       border: 1px solid var(--accent);
       border-radius: 9px;
       background: var(--accent);
@@ -97,26 +103,28 @@
       transition: transform 150ms ease, box-shadow 150ms ease, background 150ms ease;
     }
 
-    .button.secondary { background: white; color: var(--accent); }
+    .button.secondary { border-color: #cbd9dc; background: white; color: var(--ink); }
     .button:hover { transform: translateY(-2px); box-shadow: 0 8px 18px rgba(22, 123, 136, 0.17); }
     .button:focus-visible { outline: 3px solid var(--gold); outline-offset: 3px; }
     .button svg { width: 18px; height: 18px; flex: 0 0 auto; }
+    .web-resume-link { display: inline-flex; min-height: 44px; align-items: center; padding: 0 8px; color: var(--accent); font-size: 0.94rem; font-weight: 650; text-decoration: underline; text-decoration-color: #a8c9cd; text-underline-offset: 4px; }
+    .web-resume-link:hover { text-decoration-color: currentColor; }
+    .web-resume-link:focus-visible { border-radius: 4px; outline: 3px solid var(--gold); outline-offset: 2px; }
 
     .details {
       display: flex;
       flex-wrap: wrap;
       gap: 8px 20px;
-      margin-top: 35px;
-      padding-top: 22px;
-      border-top: 1px solid #e8edef;
+      margin-top: 21px;
       color: var(--muted);
-      font-size: 0.92rem;
+      font-size: 0.95rem;
     }
 
-    .details a { color: inherit; text-decoration-thickness: 1px; text-underline-offset: 3px; }
-    .details a:hover { color: var(--accent); }
+    .details a { display: inline-flex; align-items: center; gap: 7px; color: inherit; text-decoration: none; }
+    .details a::before { width: 6px; height: 6px; border-radius: 50%; background: var(--gold); content: ""; }
+    .details a:hover { color: var(--accent); text-decoration: underline; text-underline-offset: 4px; }
 
-    .section { margin-top: 42px; }
+    .section { margin-top: clamp(38px, 6vw, 58px); }
     .section-heading { margin: 0; color: var(--ink); font-size: 1.15rem; letter-spacing: -0.02em; }
     .section-intro { margin: 6px 0 0; color: var(--muted); font-size: 0.95rem; }
 
@@ -213,8 +221,24 @@
     }
 
     @media (max-width: 440px) {
-      .hero { align-items: flex-start; gap: 14px; }
-      .portrait { width: 92px; border-width: 3px; }
+      body { padding: 12px 10px 24px; }
+      main { border-radius: 16px; }
+      .content { padding: 22px 18px 28px; }
+      .hero { grid-template-columns: minmax(0, 1fr) 76px; align-items: start; gap: 10px; padding-bottom: 24px; }
+      .portrait { width: 76px; border-width: 3px; }
+      .eyebrow { margin-bottom: 11px; font-size: 0.68rem; }
+      h1 { font-size: clamp(1.9rem, 9vw, 2.25rem); }
+      .role { margin-top: 13px; font-size: 1rem; line-height: 1.45; }
+      .summary { font-size: 0.98rem; line-height: 1.58; }
+      .details { gap: 4px 14px; margin-top: 16px; font-size: 0.88rem; }
+      .details a { min-height: 32px; }
+      .actions { display: grid; grid-template-columns: 1fr; gap: 9px; margin-top: 18px; }
+      .actions .button { width: 100%; min-height: 48px; }
+      .section { margin-top: 34px; }
+      .expertise-grid, .tech-list { gap: 9px; margin-top: 14px; }
+      .expertise-card { padding: 15px; }
+      .talk { gap: 17px; padding: 15px; }
+      .play-button { right: 11px; bottom: 11px; }
     }
 
     @media (prefers-reduced-motion: reduce) {
@@ -230,22 +254,24 @@
         <div class="hero-copy">
           <p class="eyebrow">Portfolio · Resume</p>
           <h1>Vignesh Sivakumar</h1>
+          <p class="role">Technology Leader &amp; Senior Technical Architect</p>
+          <p class="summary">14 years of experience guiding teams and designing complex e-commerce platforms and internal frameworks, combining hands-on full-stack expertise with strengths in architecture, technical strategy, and mentorship.</p>
+          <div class="details">
+            <a href="mailto:yobvicky@gmail.com">yobvicky@gmail.com</a>
+            <a href="https://www.linkedin.com/in/sivakumar-vignesh/" target="_blank" rel="noopener">LinkedIn profile</a>
+          </div>
+          <nav class="actions" aria-label="Resume formats">
+            <a class="button" href="./Vignesh%20Resume.pdf" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 3v12m0 0 4-4m-4 4-4-4"/><path d="M5 17v3h14v-3"/></svg>
+              View PDF resume
+            </a>
+            <a class="web-resume-link" href="./Vignesh%20Resume.html" target="_blank" rel="noopener">
+              Prefer web? View HTML resume
+            </a>
+          </nav>
         </div>
         <div class="portrait" role="img" aria-label="Portrait of Vignesh Sivakumar"></div>
       </header>
-      <p class="role">Technology Leader &amp; Senior Technical Architect</p>
-      <p class="summary">14 years of experience guiding teams and designing complex e-commerce platforms and internal frameworks, combining hands-on full-stack expertise with strengths in architecture, technical strategy, and mentorship.</p>
-
-      <nav class="actions" aria-label="Resume formats">
-        <a class="button" href="./Vignesh%20Resume.html" target="_blank" rel="noopener">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/><path d="M14 3v6h6M8 13h8M8 17h8"/></svg>
-          View HTML resume
-        </a>
-        <a class="button secondary" href="./Vignesh%20Resume.pdf" target="_blank" rel="noopener">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 3v12m0 0 4-4m-4 4-4-4"/><path d="M5 17v3h14v-3"/></svg>
-          Open PDF resume
-        </a>
-      </nav>
 
       <section class="section" aria-labelledby="expertise-heading">
         <h2 class="section-heading" id="expertise-heading">E-commerce expertise</h2>
@@ -289,7 +315,7 @@
           <li class="tech-item"><img src="https://cdn.simpleicons.org/graphql/E10098" alt="" loading="lazy"><span>GraphQL</span></li>
           <li class="tech-item"><img src="https://cdn.simpleicons.org/googlecloud/4285F4" alt="" loading="lazy"><span>Google Cloud</span></li>
           <li class="tech-item"><span class="tech-mark" aria-hidden="true">AA</span><span>Adobe Analytics</span></li>
-          <li class="tech-item"><span class="tech-mark" aria-hidden="true">PW</span><span>Playwright</span></li>
+          <li class="tech-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/playwright/playwright-original.svg" alt="" loading="lazy"><span>Playwright</span></li>
         </ul>
       </section>
 
@@ -310,10 +336,6 @@
         </article>
       </section>
 
-      <div class="details">
-        <a href="mailto:yobvicky@gmail.com">yobvicky@gmail.com</a>
-        <a href="https://www.linkedin.com/in/sivakumar-vignesh/" target="_blank" rel="noopener">LinkedIn profile</a>
-      </div>
     </div>
   </main>
 </body>
