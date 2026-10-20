@@ -1,0 +1,320 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f5f7f8">
+  <meta name="description" content="Explore Vignesh Sivakumar's resume, experience, and technical leadership background.">
+  <title>Vignesh Sivakumar | Technology Leader</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --ink: #17324a;
+      --muted: #5b6d7d;
+      --accent: #167b88;
+      --gold: #e9b544;
+      --paper: #ffffff;
+      --canvas: #f3f6f7;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      min-height: 100vh;
+      margin: 0;
+      display: grid;
+      place-items: center;
+      padding: 32px 20px;
+      background:
+        radial-gradient(ellipse at 12% 12%, rgba(22, 123, 136, 0.09), transparent 32rem),
+        var(--canvas);
+      color: var(--ink);
+      font: 16px/1.6 -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
+    main {
+      width: min(100%, 900px);
+      overflow: hidden;
+      border: 1px solid #e1e8eb;
+      border-radius: 22px;
+      background: var(--paper);
+      box-shadow: 0 24px 70px rgba(23, 50, 74, 0.11);
+    }
+
+    .accent { height: 7px; background: linear-gradient(90deg, var(--gold) 0 23%, var(--accent) 23% 100%); }
+
+    .content { padding: clamp(30px, 7vw, 64px); }
+
+    .hero { display: flex; align-items: center; justify-content: space-between; gap: 26px; }
+    .hero-copy { min-width: 0; }
+    .portrait {
+      width: clamp(112px, 22vw, 174px);
+      aspect-ratio: 1;
+      flex: 0 0 auto;
+      border: 5px solid white;
+      border-radius: 50%;
+      background-image: url("./assets/photo.jpg");
+      background-position: 100% 0%;
+      background-size: 125% auto;
+      box-shadow: 0 0 0 1px #dce7e8, 0 12px 28px rgba(23, 50, 74, 0.16);
+    }
+
+    .eyebrow {
+      margin: 0 0 12px;
+      color: var(--accent);
+      font-size: 0.76rem;
+      font-weight: 750;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      margin: 0;
+      color: var(--ink);
+      font-size: clamp(2.35rem, 7vw, 4rem);
+      letter-spacing: -0.055em;
+      line-height: 1.06;
+    }
+
+    .role { margin: 14px 0 0; font-size: clamp(1.1rem, 3vw, 1.35rem); font-weight: 650; }
+    .summary { max-width: 590px; margin: 18px 0 0; color: var(--muted); }
+
+    .actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 30px; }
+
+    .button {
+      min-height: 48px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 0 19px;
+      border: 1px solid var(--accent);
+      border-radius: 9px;
+      background: var(--accent);
+      color: white;
+      font-weight: 700;
+      text-decoration: none;
+      transition: transform 150ms ease, box-shadow 150ms ease, background 150ms ease;
+    }
+
+    .button.secondary { background: white; color: var(--accent); }
+    .button:hover { transform: translateY(-2px); box-shadow: 0 8px 18px rgba(22, 123, 136, 0.17); }
+    .button:focus-visible { outline: 3px solid var(--gold); outline-offset: 3px; }
+    .button svg { width: 18px; height: 18px; flex: 0 0 auto; }
+
+    .details {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px 20px;
+      margin-top: 35px;
+      padding-top: 22px;
+      border-top: 1px solid #e8edef;
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+
+    .details a { color: inherit; text-decoration-thickness: 1px; text-underline-offset: 3px; }
+    .details a:hover { color: var(--accent); }
+
+    .section { margin-top: 42px; }
+    .section-heading { margin: 0; color: var(--ink); font-size: 1.15rem; letter-spacing: -0.02em; }
+    .section-intro { margin: 6px 0 0; color: var(--muted); font-size: 0.95rem; }
+
+    .tech-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(145px, 1fr));
+      gap: 10px;
+      margin: 18px 0 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .expertise-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 12px;
+      margin-top: 18px;
+    }
+
+    .expertise-card {
+      padding: 17px 18px;
+      border: 1px solid #e5ecee;
+      border-radius: 12px;
+      background: #fbfcfc;
+    }
+
+    .expertise-card h3 { margin: 0; color: var(--ink); font-size: 0.98rem; }
+    .expertise-card p { margin: 7px 0 0; color: var(--muted); font-size: 0.9rem; line-height: 1.55; }
+
+    .tech-item {
+      min-height: 58px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 12px 14px;
+      border: 1px solid #e8edef;
+      border-radius: 11px;
+      background: #fbfcfc;
+      color: var(--ink);
+      font-size: 0.93rem;
+      font-weight: 650;
+    }
+
+    .tech-item img { width: 25px; height: 25px; object-fit: contain; }
+    .tech-mark {
+      width: 25px;
+      height: 25px;
+      display: inline-grid;
+      flex: 0 0 auto;
+      place-items: center;
+      border-radius: 7px;
+      background: #e8f2f3;
+      color: var(--accent);
+      font-size: 0.68rem;
+      font-weight: 800;
+      letter-spacing: -0.04em;
+    }
+
+    .talk {
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(260px, 0.9fr);
+      gap: 24px;
+      align-items: center;
+      margin-top: 18px;
+      padding: clamp(18px, 4vw, 28px);
+      border: 1px solid #dce9eb;
+      border-radius: 15px;
+      background: linear-gradient(135deg, #f1f8f8, #fbfcfc 70%);
+    }
+
+    .talk-label {
+      display: inline-block;
+      margin-bottom: 12px;
+      color: var(--accent);
+      font-size: 0.74rem;
+      font-weight: 750;
+      letter-spacing: 0.11em;
+      text-transform: uppercase;
+    }
+
+    .talk h3 { margin: 0; color: var(--ink); font-size: clamp(1.2rem, 3vw, 1.55rem); line-height: 1.25; }
+    .talk p { margin: 10px 0 0; color: var(--muted); font-size: 0.94rem; }
+    .talk .button { margin-top: 19px; }
+
+    .video-frame { position: relative; display: block; aspect-ratio: 16 / 9; overflow: hidden; border-radius: 11px; background: #142c3c; box-shadow: 0 10px 24px rgba(23, 50, 74, 0.15); }
+    .video-frame img { width: 100%; height: 100%; display: block; object-fit: cover; }
+    .play-button { position: absolute; right: 16px; bottom: 16px; width: 50px; height: 36px; display: grid; place-items: center; border: 2px solid rgba(255, 255, 255, 0.9); border-radius: 10px; background: #e62117; color: white; box-shadow: 0 3px 12px rgba(0, 0, 0, 0.3); transition: transform 150ms ease, background 150ms ease; }
+    .video-frame:hover .play-button { background: #c91c13; transform: scale(1.08); }
+    .play-button svg { width: 21px; height: 21px; margin-left: 3px; }
+
+    @media (max-width: 680px) {
+      .talk { grid-template-columns: 1fr; }
+      .video-frame { grid-row: 1; }
+    }
+
+    @media (max-width: 440px) {
+      .hero { align-items: flex-start; gap: 14px; }
+      .portrait { width: 92px; border-width: 3px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { scroll-behavior: auto !important; transition-duration: 0.01ms !important; }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <div class="accent" aria-hidden="true"></div>
+    <div class="content">
+      <header class="hero">
+        <div class="hero-copy">
+          <p class="eyebrow">Portfolio · Resume</p>
+          <h1>Vignesh Sivakumar</h1>
+        </div>
+        <div class="portrait" role="img" aria-label="Portrait of Vignesh Sivakumar"></div>
+      </header>
+      <p class="role">Technology Leader &amp; Senior Technical Architect</p>
+      <p class="summary">14 years of experience guiding teams and designing complex e-commerce platforms and internal frameworks, combining hands-on full-stack expertise with strengths in architecture, technical strategy, and mentorship.</p>
+
+      <nav class="actions" aria-label="Resume formats">
+        <a class="button" href="./Vignesh%20Resume.html" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/><path d="M14 3v6h6M8 13h8M8 17h8"/></svg>
+          View HTML resume
+        </a>
+        <a class="button secondary" href="./Vignesh%20Resume.pdf" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 3v12m0 0 4-4m-4 4-4-4"/><path d="M5 17v3h14v-3"/></svg>
+          Open PDF resume
+        </a>
+      </nav>
+
+      <section class="section" aria-labelledby="expertise-heading">
+        <h2 class="section-heading" id="expertise-heading">E-commerce expertise</h2>
+        <p class="section-intro">The capabilities behind high-performing, measurable, and dependable digital commerce experiences.</p>
+        <div class="expertise-grid">
+          <article class="expertise-card">
+            <h3>SSR &amp; SEO</h3>
+            <p>Server-side rendering and search-aware page delivery for discoverable commerce experiences.</p>
+          </article>
+          <article class="expertise-card">
+            <h3>Analytics &amp; experimentation</h3>
+            <p>Adobe Analytics, data layers, A/B testing, and experience analytics to inform product decisions.</p>
+          </article>
+          <article class="expertise-card">
+            <h3>Reliability &amp; observability</h3>
+            <p>SRE, monitoring, and safe releases with Dynatrace, New Relic, Splunk, App Insights, and canary deployments.</p>
+          </article>
+          <article class="expertise-card">
+            <h3>Automation testing with Playwright</h3>
+            <p>Strong hands-on expertise designing and leading browser automation with Playwright to improve confidence in complex commerce journeys.</p>
+          </article>
+          <article class="expertise-card">
+            <h3>Responsive, reusable UX</h3>
+            <p>Accessible, device-friendly interfaces built with UX and product partners around reusable design systems.</p>
+          </article>
+          <article class="expertise-card">
+            <h3>Commerce platforms &amp; integration</h3>
+            <p>B2B and B2C commerce across SAP Hybris, microservice APIs, SSO, and OAuth2 integrations.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section" aria-labelledby="tech-heading">
+        <h2 class="section-heading" id="tech-heading">Selected technologies</h2>
+        <p class="section-intro">A few tools and platforms from my hands-on work across web, e-commerce, and cloud engineering.</p>
+        <ul class="tech-list">
+          <li class="tech-item"><img src="https://cdn.simpleicons.org/nextdotjs/000000" alt="" loading="lazy"><span>Next.js</span></li>
+          <li class="tech-item"><img src="https://cdn.simpleicons.org/react/61DAFB" alt="" loading="lazy"><span>React</span></li>
+          <li class="tech-item"><img src="https://cdn.simpleicons.org/nodedotjs/339933" alt="" loading="lazy"><span>Node.js</span></li>
+          <li class="tech-item"><img src="https://cdn.simpleicons.org/angular/DD0031" alt="" loading="lazy"><span>Angular</span></li>
+          <li class="tech-item"><img src="https://cdn.simpleicons.org/graphql/E10098" alt="" loading="lazy"><span>GraphQL</span></li>
+          <li class="tech-item"><img src="https://cdn.simpleicons.org/googlecloud/4285F4" alt="" loading="lazy"><span>Google Cloud</span></li>
+          <li class="tech-item"><span class="tech-mark" aria-hidden="true">AA</span><span>Adobe Analytics</span></li>
+          <li class="tech-item"><span class="tech-mark" aria-hidden="true">PW</span><span>Playwright</span></li>
+        </ul>
+      </section>
+
+      <section class="section" aria-labelledby="talk-heading">
+        <h2 class="section-heading" id="talk-heading">Featured talk</h2>
+        <p class="section-intro">Sharing practical lessons with the developer community.</p>
+        <article class="talk">
+          <div>
+            <span class="talk-label">Chennai Platform Engineering Meetup</span>
+            <h3>Next.js E-Commerce: Beyond Loaders, Mastering Interactive UX</h3>
+            <p>Watch my session, starting at 45:06.</p>
+            <a class="button" href="https://www.youtube.com/live/GPtkFMgpTqc?si=F92bxGIz64V4mDtR&amp;t=2706" target="_blank" rel="noopener">Watch the session</a>
+          </div>
+          <a class="video-frame" href="https://www.youtube.com/live/GPtkFMgpTqc?si=F92bxGIz64V4mDtR&amp;t=2706" target="_blank" rel="noopener" aria-label="Watch the featured session on YouTube, starting at 45 minutes 6 seconds">
+            <img src="./assets/thumbnail.png" alt="Vignesh presenting his Next.js e-commerce session at the meetup" loading="lazy">
+            <span class="play-button" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span>
+          </a>
+        </article>
+      </section>
+
+      <div class="details">
+        <a href="mailto:yobvicky@gmail.com">yobvicky@gmail.com</a>
+        <a href="https://www.linkedin.com/in/sivakumar-vignesh/" target="_blank" rel="noopener">LinkedIn profile</a>
+      </div>
+    </div>
+  </main>
+</body>
+</html>
